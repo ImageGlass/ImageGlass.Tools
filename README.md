@@ -1,1 +1,1 @@
-# ImageGlass.Tool
+# ImageGlass.Tools - Build tools for ImageGlass
