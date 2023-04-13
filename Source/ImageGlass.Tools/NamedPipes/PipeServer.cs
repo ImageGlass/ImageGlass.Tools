@@ -19,7 +19,7 @@ using System.Threading;
 public class PipeServer : IDisposable
 {
     private CancellationTokenSource _cancellationTokenSource;
-    
+
 
 
     #region IDisposable Disposing
