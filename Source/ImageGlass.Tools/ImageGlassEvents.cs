@@ -15,7 +15,7 @@ namespace ImageGlass.Tools;
 public static class ImageGlassEvents
 {
     /// <summary>
-    /// Requests <see cref="PipeClient"/> to terminate the process.
+    /// Requests to terminate the process of <see cref="ImageGlassTool"/>.
     /// </summary>
     public static string TOOL_TERMINATE => "igtool.event.tool_terminate";
 
@@ -52,4 +52,5 @@ public static class ImageGlassEvents
     /// Occurs when the theme is updated.
     /// </summary>
     public static string THEME_UPDATED => "igtool.event.theme_updated";
+
 }
