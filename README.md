@@ -1,6 +1,8 @@
 # ImageGlass.Tools - Build tools for ImageGlass
-ImageGlass.Tools is set of APIs to integrate third-party software with ImageGlass.
+ImageGlass.Tools is a set of APIs to integrate third-party software with ImageGlass.
 With ImageGlass.Tools, developers can extend the functionality of ImageGlass by integrating their own software solutions, making it a highly customizable and versatile tool for all image viewing needs.
+
+You can download tools for ImageGlass 9 at: https://imageglass.org/tools
 
 ![ImageGlass.Tools](https://raw.githubusercontent.com/ImageGlass/ImageGlass.Tools/main/demo.jpg)
 
