@@ -60,7 +60,7 @@ public class ImageGlassTool : IDisposable
     /// <summary>
     /// Occurs when ImageGlass app requests <see cref="ImageGlassTool"/> app to close.
     /// <para>
-    /// It happens when ImageGlass app sends <see cref="ToolServerMsgs.TOOL_TERMINATE"/>
+    /// It happens when ImageGlass app sends <see cref="ImageGlassEvents.TOOL_TERMINATE"/>
     /// message, or disconnects to <see cref="ImageGlassTool"/> app.
     /// </para>
     /// </summary>
@@ -116,7 +116,7 @@ public class ImageGlassTool : IDisposable
     protected virtual void OnToolMessageReceived(MessageReceivedEventArgs e)
     {
         // terminate slideshow
-        if (e.MessageName == ToolServerMsgs.TOOL_TERMINATE)
+        if (e.MessageName == ImageGlassEvents.TOOL_TERMINATE)
         {
             OnToolClosingRequest(new(_client.PipeName));
             return;
