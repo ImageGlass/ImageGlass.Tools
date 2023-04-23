@@ -81,13 +81,13 @@ public class PipeServer : IDisposable
     /// <summary>
     /// Occurs when a message is received from the named pipe.
     /// </summary>
-    public event EventHandler<MessageReceivedEventArgs> MessageReceived;
+    public event EventHandler<MessageReceivedEventArgs>? MessageReceived;
 
 
     /// <summary>
     /// Occurs when the client disconnected.
     /// </summary>
-    public event EventHandler<DisconnectedEventArgs> ClientDisconnected;
+    public event EventHandler<DisconnectedEventArgs>? ClientDisconnected;
 
     #endregion
 
