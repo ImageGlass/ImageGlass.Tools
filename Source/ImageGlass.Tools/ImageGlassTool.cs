@@ -6,6 +6,7 @@ Project homepage: https://imageglass.org
 MIT License
 */
 
+using System.Diagnostics;
 using System.IO.Pipes;
 
 namespace ImageGlass.Tools;
@@ -74,7 +75,7 @@ public class ImageGlassTool : IDisposable
     /// </summary>
     public ImageGlassTool()
     {
-        var serverName = CreateServerName();
+        var serverName = GetServerNameFromCmdLineArgs();
 
         _client = new PipeClient(serverName, PipeDirection.InOut);
         _client.MessageReceived += Client_MessageReceived;
@@ -143,9 +144,14 @@ public class ImageGlassTool : IDisposable
     #region Static props & methods
 
     /// <summary>
+    /// Gets the prefix of pipe name command line argument passed to tool client.
+    /// </summary>
+    public static string PIPE_CODE_CMD_LINE => "--ig-tool-pipe-code=";
+
+    /// <summary>
     /// Gets the pipename prefix.
     /// </summary>
-    public static string PIPENAME_PREFIX => "+IG_TOOL+_";
+    public static string PIPE_NAME_PREFIX => "+IG_TOOL+_";
 
     /// <summary>
     /// Gets the message separator constant.
@@ -160,16 +166,65 @@ public class ImageGlassTool : IDisposable
 
 
     /// <summary>
-    /// Creates server name by combining <see cref="PIPENAME_PREFIX"/> and
-    /// <see cref="Environment.ProcessPath"/>.
+    /// Creates server name by combining <see cref="PIPE_NAME_PREFIX"/> and <paramref name="code"/>.
     /// </summary>
-    /// <returns>Example: <c>+IG_TOOL+_app.exe"</c></returns>
-    public static string CreateServerName()
+    /// <returns>Example: <c>+IG_TOOL+_hello"</c></returns>
+    public static string CreateServerName(string code)
     {
-        var fileName = Path.GetFileName(Environment.ProcessPath);
-
-        return $"{PIPENAME_PREFIX}{fileName}";
+        return $"{PIPE_NAME_PREFIX}{code}";
     }
+
+
+    /// <summary>
+    /// Gets server name by combining <see cref="PIPE_NAME_PREFIX"/> and
+    /// value of the command line arg <see cref="PIPE_CODE_CMD_LINE"/>.
+    /// </summary>
+    /// <returns>Example: <c>"+IG_TOOL+_hello"</c></returns>
+    public static string GetServerNameFromCmdLineArgs()
+    {
+        var cmd = Environment.GetCommandLineArgs()
+            .FirstOrDefault(i => i.StartsWith(PIPE_CODE_CMD_LINE, StringComparison.InvariantCultureIgnoreCase));
+        var pipeCode = cmd?[PIPE_CODE_CMD_LINE.Length..];
+
+        if (!string.IsNullOrEmpty(pipeCode))
+        {
+            return $"{PIPE_NAME_PREFIX}{pipeCode}";
+        }
+
+        return PIPE_NAME_PREFIX;
+    }
+
+
+    /// <summary>
+    /// Launches tool app.
+    /// </summary>
+    /// <exception cref="FileNotFoundException"></exception>
+    public static Process? LaunchTool(string filename, string args, bool asAdmin = false)
+    {
+        var proc = new Process();
+        proc.StartInfo.FileName = filename;
+        proc.StartInfo.Arguments = args;
+
+        proc.StartInfo.Verb = asAdmin ? "runas" : "";
+        proc.StartInfo.UseShellExecute = true;
+
+        try
+        {
+            proc.Start();
+
+            return proc;
+        }
+        catch (Exception ex)
+        {
+            if (ex.Message.Contains("system cannot find the file", StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new FileNotFoundException(ex.Message, filename);
+            }
+        }
+
+        return null;
+    }
+
 
     #endregion // Static props & methods
 
