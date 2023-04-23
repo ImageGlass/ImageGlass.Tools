@@ -2,28 +2,28 @@
 ImageGlass.Tools is a set of APIs to integrate third-party software with ImageGlass.
 With ImageGlass.Tools, developers can extend the functionality of ImageGlass by integrating their own software solutions, making it a highly customizable and versatile tool for all image viewing needs.
 
-You can download tools for ImageGlass 9 at: https://imageglass.org/tools
+You can download tools for ImageGlass 9 at: https://imageglass.org/tools.
 
 ![ImageGlass.Tools](https://raw.githubusercontent.com/ImageGlass/ImageGlass.Tools/main/demo.jpg)
 
 ## Getting started
-Here are the simple steps to use APIS from ImageGlass.Tools. You can check out the [`DemoApp` project](https://github.com/ImageGlass/ImageGlass.Tools/tree/main/Source/DemoApp) for complete sample.
+Here are the simple steps to use APIs from ImageGlass.Tools. You can check out the [`DemoApp` project](./Source/DemoApp) for complete sample.
 
-1. To get started, you need to download or clone this repo.
-2. Create a new project in Visual Studio.
-3. Add `ImageGlass.Tools.csproj` as a reference project into your software.
-4. Create a new instance of `ImageGlassTool`:
+1. To get started, you need to create a new project in Visual Studio.
+2. Install [ImageGlass.Tools from Nuget](https://www.nuget.org/packages/ImageGlass.Tools).
+_Alternatively, you also can clone this repo and add `ImageGlass.Tools.csproj` as a reference project_.
+3. Create a new instance of `ImageGlassTool`:
 ```cs
 private readonly ImageGlassTool _igTool = new ImageGlassTool();
 ```
 
-5. Add event listeners to ImageGlass:
+4. Add event listeners to ImageGlass:
 ```cs
 _igTool.ToolMessageReceived += IgTool_ToolMessageReceived;
 _igTool.ToolClosingRequest += IgTool_ToolClosingRequest;
 ```
 
-6. Handle event from ImageGlass:
+5. Handle event from ImageGlass:
 ```cs
 private void IgTool_ToolMessageReceived(object? sender, MessageReceivedEventArgs e)
 {
@@ -37,7 +37,7 @@ private void IgTool_ToolMessageReceived(object? sender, MessageReceivedEventArgs
 }
 ```
 
-7. Start connecting to ImageGlass:
+6. Start connecting to ImageGlass:
 ```cs
 await _igTool.ConnectAsync();
 ```
