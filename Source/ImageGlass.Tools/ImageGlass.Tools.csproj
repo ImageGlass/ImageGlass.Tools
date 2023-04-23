@@ -9,6 +9,29 @@
     <Version>1.0.9040.0</Version>
     <FileVersion>$(Version)</FileVersion>
     <Copyright>Copyright © 2023 Duong Dieu Phap</Copyright>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>$(AssemblyName) - Build tools for ImageGlass</Title>
+    <Description>ImageGlass.Tools is a set of APIs to integrate third-party software with ImageGlass. With ImageGlass.Tools, developers can extend the functionality of ImageGlass by integrating their own software solutions, making it a highly customizable and versatile tool for all image viewing needs.</Description>
+    <PackageProjectUrl>https://github.com/ImageGlass/ImageGlass.Tools</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/ImageGlass/ImageGlass.Tools</RepositoryUrl>
+    <PackageTags>imageglass, imageglass tool</PackageTags>
+    <PackageReleaseNotes>See https://github.com/ImageGlass/ImageGlass.Tools/releases</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <AnalysisLevel>6.0</AnalysisLevel>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
