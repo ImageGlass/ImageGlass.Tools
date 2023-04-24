@@ -159,11 +159,6 @@ public class ImageGlassTool : IDisposable
     /// </summary>
     public static string MSG_SEPARATOR => "{:+IG_TOOL+:}";
 
-    /// <summary>
-    /// Gets the command-line for enabling window top most.
-    /// </summary>
-    public static string CMD_WINDOW_TOP_MOST => "EnableWindowTopMost";
-
 
     /// <summary>
     /// Creates server name by combining <see cref="PIPE_NAME_PREFIX"/> and <paramref name="code"/>.
