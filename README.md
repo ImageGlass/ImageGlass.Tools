@@ -54,20 +54,12 @@ await _igTool.ConnectAsync();
     "ToolName": "My Demo app", // name of the tool
     "Executable": "path\\to\\the\\DemoApp.exe",
     "Argument": "<file>", // file path to pass to the tool
+    "Hotkeys": ["X", "Ctrl+E"], // press X or Ctrl+E to open/close the tool
     "IsIntegrated": true|false // true: if the tool supports 'ImageGlass.Tools'
   }
 ]
 ```
-
-4. To assign hotkeys to the tool, add the following code:
-```js
-// in igconfig.json
-"MenuHotkeys": {
-  "Tool_MyDemoApp": ["X", "Ctrl+E"] // press X or Ctrl+E to open/close the tool
-}
-```
-
-5. Save the file, and you're done!
+4. Save the file, and you're done!
 
 
 
