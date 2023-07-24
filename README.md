@@ -43,6 +43,18 @@ await _igTool.ConnectAsync();
 ```
 
 ## Add an external tool to ImageGlass 9
+### Use ImageGlass Settings
+1. Open ImageGlass Settings, click on tab "Tools"
+2. Click "Add..." button to add a new tool
+3. Fill in all the fields accordingly
+    - In `Arguments` text box, use `<file>` so that ImageGlass will send the full path of the current viewing image file to the tool
+    - Check the option `Integrated with ImageGlass.Tools` if the tool has implementation of [ImageGlass.Tools](https://github.com/ImageGlass/ImageGlass.Tools
+    - Check command preview to make sure your inputs are correct
+4. Click "OK" button to close the dialog, click "OK" or "Apply" button to apply the changes
+<img width="600" src="https://github.com/ImageGlass/ImageGlass.Tools/assets/3154213/2c52adf2-63cd-495f-8f09-de606ab54893" />
+
+
+### Use `igconfig.json`
 1. Open `igconfig.json` file with a text editor such as NotePad or VS Code.
 2. Ensure that ImageGlass app is not running.
 3. In the Tools section of the `igconfig.json` file, add the following code:
@@ -60,6 +72,4 @@ await _igTool.ConnectAsync();
 ]
 ```
 4. Save the file, and you're done!
-
-
 
