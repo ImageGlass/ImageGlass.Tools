@@ -5,8 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Configurations>Debug;Release;Publish_Release</Configurations>
-    <Platforms>AnyCPU;x64;x86;ARM64</Platforms>
-    <Version>1.9040.0.0</Version>
+    <Platforms>AnyCPU;x64;ARM64</Platforms>
+    <Version>1.9050.0.0</Version>
     <FileVersion>$(Version)</FileVersion>
     <Copyright>Copyright © 2023 Duong Dieu Phap</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
