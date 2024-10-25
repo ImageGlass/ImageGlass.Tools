@@ -197,8 +197,19 @@ public class ImageGlassTool : IDisposable
     public static Process? LaunchTool(string filename, string args, bool asAdmin = false)
     {
         var proc = new Process();
-        proc.StartInfo.FileName = filename;
-        proc.StartInfo.Arguments = args;
+
+        // filename is an app protocal
+        if (filename.EndsWith(':'))
+        {
+            var url = $"{filename}{args}";
+            proc.StartInfo.FileName = url;
+        }
+        // filename is a path
+        else
+        {
+            proc.StartInfo.FileName = filename;
+            proc.StartInfo.Arguments = args;
+        }
 
         proc.StartInfo.Verb = asAdmin ? "runas" : "";
         proc.StartInfo.UseShellExecute = true;
