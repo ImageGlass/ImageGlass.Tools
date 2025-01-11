@@ -1,6 +1,6 @@
 ﻿/*
 ImageGlass.Tools - Build tools for ImageGlass
-Copyright (C) 2023 DUONG DIEU PHAP
+Copyright (C) 2023-2025 DUONG DIEU PHAP
 Project homepage: https://imageglass.org
 
 MIT License
